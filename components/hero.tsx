@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Play, Wifi, Camera, Shield, Users, Building2 } from "lucide-react"
+import { ArrowRight, Wifi, Camera, Shield, Users, Building2 } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
 import { PremiumDashboard } from "@/components/premium-dashboard"
 import { motion } from "framer-motion"
@@ -59,28 +59,22 @@ export function Hero() {
               {t("hero.description")}
             </p>
 
-            {/* CTA Buttons with Pulsing Glow */}
+            {/* CTA Button with Pulsing Glow */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="relative bg-emerald-500 hover:bg-emerald-600 text-white gap-2 h-12 px-8 rounded-xl font-semibold transition-all duration-300 hover:scale-105 group overflow-hidden"
-              >
-                {/* Pulsing Glow Effect */}
-                <span className="absolute inset-0 bg-emerald-400 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500 animate-pulse" />
-                <span className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-green-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+              <a href="#contacto">
+                <Button
+                  size="lg"
+                  className="relative bg-emerald-500 hover:bg-emerald-600 text-white gap-2 h-12 px-8 rounded-xl font-semibold transition-all duration-300 hover:scale-105 group overflow-hidden"
+                >
+                  {/* Pulsing Glow Effect */}
+                  <span className="absolute inset-0 bg-emerald-400 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500 animate-pulse" />
+                  <span className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-green-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
 
-                <span className="relative z-10">{t("hero.cta.demo")}</span>
-                <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
-              </Button>
+                  <span className="relative z-10">{t("hero.cta.demo")}</span>
+                  <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </a>
 
-              <Button
-                size="lg"
-                variant="outline"
-                className="gap-2 h-12 px-8 rounded-xl border-slate-300 hover:bg-slate-100 bg-white font-semibold transition-all duration-300"
-              >
-                <Play className="w-4 h-4" />
-                {t("hero.cta.video")}
-              </Button>
             </div>
 
             {/* Trust Bar - Human Metrics */}

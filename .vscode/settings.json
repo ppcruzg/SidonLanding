@@ -1,0 +1,9 @@
+{
+    "livePreview.defaultPreviewPath": "http://localhost:3000",
+    "livePreview.portNumber": 3000,
+    "livePreview.autoRefreshPreview": "On Changes to Saved Files",
+    "livePreview.showServerStatusNotifications": true,
+    "liveServer.settings.port": 3000,
+    "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.donotShowInfoMsg": false
+}
