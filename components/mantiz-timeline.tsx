@@ -82,7 +82,7 @@ const MantizTimeline = () => {
     ];
 
     return (
-        <section ref={sectionRef} className="py-24 bg-gradient-to-br from-slate-50 to-white overflow-hidden">
+        <section id="mantenimiento" ref={sectionRef} className="py-24 bg-gradient-to-br from-slate-50 to-white overflow-hidden">
             <div className="container mx-auto px-6">
                 {/* Section Header */}
                 <div className="text-center mb-20">
@@ -134,8 +134,8 @@ const MantizTimeline = () => {
 
                                             {/* Main Circle */}
                                             <div className={`relative w-full h-full rounded-full border-4 transition-all duration-500 flex flex-col items-center justify-center ${isCompleted
-                                                    ? 'border-emerald-500 bg-gradient-to-br from-emerald-50 to-white shadow-xl shadow-emerald-500/30'
-                                                    : 'border-slate-300 bg-white shadow-lg'
+                                                ? 'border-emerald-500 bg-gradient-to-br from-emerald-50 to-white shadow-xl shadow-emerald-500/30'
+                                                : 'border-slate-300 bg-white shadow-lg'
                                                 } group-hover:scale-110 group-hover:shadow-2xl`}>
                                                 {/* Icon */}
                                                 <Icon
@@ -223,8 +223,8 @@ const MantizTimeline = () => {
                                         {/* Node Circle */}
                                         <div className="flex-shrink-0">
                                             <div className={`relative w-32 h-32 rounded-full border-4 transition-all duration-500 flex flex-col items-center justify-center ${lineProgress >= ((index + 1) / timelineNodes.length) * 100
-                                                    ? 'border-emerald-500 bg-gradient-to-br from-emerald-50 to-white shadow-xl shadow-emerald-500/30'
-                                                    : 'border-slate-300 bg-white shadow-lg'
+                                                ? 'border-emerald-500 bg-gradient-to-br from-emerald-50 to-white shadow-xl shadow-emerald-500/30'
+                                                : 'border-slate-300 bg-white shadow-lg'
                                                 }`}>
                                                 <Icon
                                                     size={32}

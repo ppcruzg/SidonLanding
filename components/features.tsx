@@ -83,7 +83,7 @@ const Features = () => {
     const currentBgImage = modules.find(m => m.id === activeModule)?.bgImage || null;
 
     return (
-        <section className="relative py-24 overflow-hidden">
+        <section id="modulos" className="relative py-24 overflow-hidden">
             {/* Dynamic Background Images */}
             <div className="absolute inset-0 bg-slate-50">
                 <AnimatePresence mode="wait">
@@ -148,8 +148,8 @@ const Features = () => {
                             >
                                 {/* Glassmorphism Card */}
                                 <div className={`relative h-full p-8 rounded-3xl transition-all duration-500 ${isActive
-                                        ? `backdrop-blur-xl bg-white/95 border-2 ${module.borderColor} shadow-2xl ${module.glowColor} scale-105`
-                                        : 'backdrop-blur-xl bg-white/80 border border-white/40 shadow-lg hover:shadow-xl'
+                                    ? `backdrop-blur-xl bg-white/95 border-2 ${module.borderColor} shadow-2xl ${module.glowColor} scale-105`
+                                    : 'backdrop-blur-xl bg-white/80 border border-white/40 shadow-lg hover:shadow-xl'
                                     }`}>
                                     {/* Icon Circle */}
                                     <div className={`mb-6 w-16 h-16 rounded-2xl bg-gradient-to-br ${module.color} p-0.5 transition-transform duration-500 ${isActive ? 'scale-110 rotate-6' : 'group-hover:scale-105'

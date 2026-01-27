@@ -4,20 +4,26 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ChevronDown } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
 import { LanguageToggle } from "./language-toggle"
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isModulesDropdownOpen, setIsModulesDropdownOpen] = useState(false)
+  const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null)
   const { t } = useLanguage()
 
   const navLinks = [
     { href: "#soluciones", label: t("nav.solutions") },
-    { href: "#modulos", label: t("nav.modules") },
     { href: "#roi", label: t("nav.roi") },
     { href: "#contacto", label: t("nav.contact") },
+  ]
+
+  const modulesSubmenu = [
+    { href: "#modulos", label: "Ver todos los módulos" },
+    { href: "#mantenimiento", label: "Gestión de Mantenimiento" },
   ]
 
   useEffect(() => {
@@ -27,6 +33,21 @@ export function Header() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const handleMouseEnter = () => {
+    if (dropdownTimeout) {
+      clearTimeout(dropdownTimeout)
+      setDropdownTimeout(null)
+    }
+    setIsModulesDropdownOpen(true)
+  }
+
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setIsModulesDropdownOpen(false)
+    }, 200)
+    setDropdownTimeout(timeout)
+  }
 
   return (
     <header
@@ -60,14 +81,44 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
+
+            {/* Módulos Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <button className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                {t("nav.modules")}
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isModulesDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Dropdown Menu */}
+              {isModulesDropdownOpen && (
+                <div className="absolute top-full left-0 mt-1 w-64 bg-background/95 backdrop-blur-md border border-border rounded-lg shadow-lg overflow-hidden">
+                  {modulesSubmenu.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                      onClick={() => setIsModulesDropdownOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* CTA Button & Language Toggle */}
           <div className="hidden lg:flex items-center gap-2">
             <LanguageToggle />
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              {t("nav.requestDemo")}
-            </Button>
+            <a href="#contacto">
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                {t("nav.requestDemo")}
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -99,9 +150,31 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground mt-4">
-              {t("nav.requestDemo")}
-            </Button>
+
+            {/* Módulos Section in Mobile */}
+            <div className="space-y-2">
+              <div className="py-2 text-base font-medium text-foreground">
+                {t("nav.modules")}
+              </div>
+              <div className="pl-4 space-y-2">
+                {modulesSubmenu.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="block py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <a href="#contacto" onClick={() => setIsMobileMenuOpen(false)}>
+              <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground mt-4">
+                {t("nav.requestDemo")}
+              </Button>
+            </a>
           </div>
         </div>
       )}

@@ -43,7 +43,7 @@ export function Solutions() {
   ]
 
   return (
-    <section id="modulos" className="py-16 lg:py-24 bg-background">
+    <section className="py-16 lg:py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
@@ -66,19 +66,19 @@ export function Solutions() {
               <div className={`w-12 h-12 rounded-xl ${solution.color} flex items-center justify-center mb-5`}>
                 <solution.icon className="w-6 h-6 text-primary-foreground" />
               </div>
-              
+
               <span className="text-xs font-medium text-primary uppercase tracking-wider mb-1">
                 {solution.subtitle}
               </span>
-              
+
               <h3 className="text-xl font-bold text-foreground mb-3">
                 {solution.title}
               </h3>
-              
+
               <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
                 {solution.description}
               </p>
-              
+
               <ul className="space-y-2 mb-6">
                 {solution.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-2 text-sm text-foreground">
@@ -87,7 +87,7 @@ export function Solutions() {
                   </li>
                 ))}
               </ul>
-              
+
               <Button variant="ghost" className="w-full justify-between group-hover:text-primary transition-colors">
                 {t("solutions.learnMore")}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
