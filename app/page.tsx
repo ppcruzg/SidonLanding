@@ -5,7 +5,7 @@ import { Hero } from "@/components/hero"
 import { Stats } from "@/components/stats"
 import Features from "@/components/features"
 import DumaSection from "@/components/duma-section"
-import ROISection from "@/components/roi-section"
+// import ROISection from "@/components/roi-section"
 import CSQCommitmentSection from "@/components/csq-commitment-section"
 import MantizTimeline from "@/components/mantiz-timeline"
 import { Comparison } from "@/components/comparison"
@@ -21,7 +21,7 @@ export default function Home() {
       <Stats />
       <Features />
       <DumaSection />
-      <ROISection />
+      {/* <ROISection /> */}
       <CSQCommitmentSection />
       <MantizTimeline />
       <Comparison />
