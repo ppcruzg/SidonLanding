@@ -10,10 +10,10 @@ export function Footer() {
 
   const footerLinks = {
     soluciones: [
-      { label: t("solutions.sense.title"), href: "#" },
-      { label: t("solutions.audits.title"), href: "#" },
-      { label: t("solutions.mantiz.title"), href: "#" },
-      { label: t("solutions.citas.title"), href: "#" },
+      { label: t("solutions.sense.title"), href: "/sense-iot" },
+      { label: t("solutions.audits.title"), href: "/smart-audits" },
+      { label: t("solutions.mantiz.title"), href: "#mantenimiento" },
+      { label: t("solutions.citas.title"), href: "/smart-citas" },
     ],
     empresa: [
       { label: t("footer.aboutUs"), href: "#" },
@@ -57,11 +57,11 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 flex-shrink-0 text-primary" />
-                <span>+52 614 123 4567</span>
+                <span>800-326-0728</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 flex-shrink-0 text-primary" />
-                <span>info@ecosat.mx</span>
+                <span>ventas@ecosat.com.mx</span>
               </div>
             </div>
           </div>

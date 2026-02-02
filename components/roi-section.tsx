@@ -144,7 +144,7 @@ const ROISection = () => {
                                 </div>
                             </div>
                             <p className="text-white font-semibold text-sm leading-tight">
-                                {t("roi.csq.badge")}
+                                {t("roi.csm.badge")}
                             </p>
                         </div>
 

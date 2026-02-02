@@ -62,7 +62,13 @@ export function Solutions() {
           {solutions.map((solution) => (
             <Link
               key={solution.title}
-              href={solution.title === t("solutions.sense.title") ? "/sense-iot" : "#"}
+              href={
+                solution.title === t("solutions.sense.title") ? "/sense-iot" :
+                  solution.title === t("solutions.audits.title") ? "/smart-audits" :
+                    solution.title === t("solutions.mantiz.title") ? "#mantenimiento" :
+                      solution.title === t("solutions.citas.title") ? "/smart-citas" :
+                        "#"
+              }
               className="group relative flex flex-col p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
             >
               <div className={`w-12 h-12 rounded-xl ${solution.color} flex items-center justify-center mb-5`}>

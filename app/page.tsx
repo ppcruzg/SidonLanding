@@ -6,11 +6,12 @@ import { Stats } from "@/components/stats"
 import Features from "@/components/features"
 import DumaSection from "@/components/duma-section"
 // import ROISection from "@/components/roi-section"
-import CSQCommitmentSection from "@/components/csq-commitment-section"
+// import CSQCommitmentSection from "@/components/csq-commitment-section"
 import MantizTimeline from "@/components/mantiz-timeline"
 import { Comparison } from "@/components/comparison"
 import { Support } from "@/components/support"
-import { CSQCommitment } from "@/components/csq-commitment"
+// import { CSQCommitment } from "@/components/csq-commitment"
+import { ContactForm } from "@/components/contact-form"
 import { CTA } from "@/components/cta"
 import { Footer } from "@/components/footer"
 export default function Home() {
@@ -22,11 +23,12 @@ export default function Home() {
       <Features />
       <DumaSection />
       {/* <ROISection /> */}
-      <CSQCommitmentSection />
+      {/* <CSQCommitmentSection /> */}
       <MantizTimeline />
       <Comparison />
       <Support />
-      <CSQCommitment />
+      {/* <CSQCommitment /> */}
+      <ContactForm />
       <CTA />
       <Footer />
     </main>

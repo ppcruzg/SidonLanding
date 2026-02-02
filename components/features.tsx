@@ -147,7 +147,13 @@ const Features = () => {
                                 onMouseLeave={() => setActiveModule(null)}
                                 className="group cursor-pointer"
                             >
-                                <Link href={module.id === 'sense' ? "/sense-iot" : "#"}>
+                                <Link href={
+                                    module.id === 'sense' ? "/sense-iot" :
+                                        module.id === 'audits' ? "/smart-audits" :
+                                            module.id === 'mantiz' ? "#mantenimiento" :
+                                                module.id === 'citas' ? "/smart-citas" :
+                                                    "#"
+                                }>
                                     {/* Glassmorphism Card */}
                                     <div className={`relative h-full p-8 rounded-3xl transition-all duration-500 ${isActive
                                         ? `backdrop-blur-xl bg-white/95 border-2 ${module.borderColor} shadow-2xl ${module.glowColor} scale-105`

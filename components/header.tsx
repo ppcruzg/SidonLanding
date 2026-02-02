@@ -26,6 +26,8 @@ export function Header() {
   const modulesSubmenu = [
     { href: "#modulos", label: t("nav.modules.all") },
     { href: "/sense-iot", label: t("nav.modules.sense") },
+    { href: "/smart-audits", label: t("nav.modules.audits") },
+    { href: "/smart-citas", label: t("nav.modules.citas") },
     { href: "#mantenimiento", label: t("nav.modules.mantenimiento") },
     { href: "#duma-value", label: t("nav.modules.duma") },
   ]
