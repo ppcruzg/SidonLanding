@@ -271,10 +271,15 @@ const MantizTimeline = () => {
 
                 {/* Bottom CTA */}
                 <div className="mt-20 text-center">
-                    <div className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-500 text-white shadow-xl shadow-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/40 transition-all duration-300 hover:scale-105 cursor-pointer">
+                    <a
+                        href="https://servicios.sidon.mx/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-500 text-white shadow-xl shadow-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/40 transition-all duration-300 hover:scale-105 cursor-pointer"
+                    >
                         <CheckCircle2 size={24} />
                         <span className="text-lg font-bold">{t("mantiz.cta")}</span>
-                    </div>
+                    </a>
                 </div>
             </div>
 

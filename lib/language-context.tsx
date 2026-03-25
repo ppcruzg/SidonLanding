@@ -22,7 +22,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.modules.sense": "Sense IOT",
     "nav.modules.audits": "Smart Audits",
     "nav.modules.citas": "Smart Citas",
-    "nav.modules.mantenimiento": "Gestión de Mantenimiento",
+    "nav.modules.mantenimiento": "Sidon Mantiz",
     "nav.modules.duma": "DUMA Agente AI",
 
     // Hero
@@ -424,7 +424,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.modules.sense": "Sense IOT",
     "nav.modules.audits": "Smart Audits",
     "nav.modules.citas": "Smart Citas",
-    "nav.modules.mantenimiento": "Maintenance Management",
+    "nav.modules.mantenimiento": "Sidon Mantiz",
     "nav.modules.duma": "DUMA AI Agent",
 
     // Hero
