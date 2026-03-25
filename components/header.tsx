@@ -12,6 +12,7 @@ import { LanguageToggle } from "./language-toggle"
 export function Header() {
   const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isModulesDropdownOpen, setIsModulesDropdownOpen] = useState(false)
   const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null)
@@ -35,8 +36,13 @@ export function Header() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
+      const doc = document.documentElement
+      const maxScroll = doc.scrollHeight - window.innerHeight
+      const progress = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0
+      setScrollProgress(progress)
     }
     window.addEventListener("scroll", handleScroll)
+    handleScroll()
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -58,10 +64,16 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? "bg-slate-950/35 backdrop-blur-xl"
+        ? "bg-slate-950/42 backdrop-blur-xl"
         : "bg-transparent"
         }`}
     >
+      <div className="absolute inset-x-0 top-0 h-px bg-white/10">
+        <div
+          className="h-full bg-[linear-gradient(90deg,rgba(16,185,129,0.1),rgba(52,211,153,0.9),rgba(255,255,255,0.35))] transition-[width] duration-200"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -179,13 +191,13 @@ export function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-background border-t border-border">
-          <div className="px-4 py-4 space-y-3">
+        <div className="lg:hidden border-t border-white/10 bg-slate-950/94 backdrop-blur-2xl">
+          <div className="px-4 py-5 space-y-3">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block py-2 text-base font-medium text-foreground hover:text-primary transition-colors"
+                className="block rounded-2xl border border-white/8 bg-white/4 px-4 py-3 text-base font-medium text-white/88 transition-colors hover:border-emerald-500/20 hover:bg-white/8 hover:text-white"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
@@ -193,8 +205,8 @@ export function Header() {
             ))}
 
             {/* Modules section in mobile */}
-            <div className="space-y-2">
-              <div className="py-2 text-base font-medium text-foreground">
+            <div className="space-y-2 rounded-[24px] border border-white/10 bg-white/4 p-3">
+              <div className="px-2 py-2 text-base font-medium text-white">
                 {t("nav.modules")}
               </div>
               <div className="pl-4 space-y-2">
@@ -205,7 +217,7 @@ export function Header() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                      className="block rounded-xl px-3 py-2 text-sm font-medium text-white/62 transition-colors hover:bg-white/6 hover:text-emerald-300"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.label}
@@ -214,7 +226,7 @@ export function Header() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="block py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                      className="block rounded-xl px-3 py-2 text-sm font-medium text-white/62 transition-colors hover:bg-white/6 hover:text-emerald-300"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.label}
@@ -225,7 +237,7 @@ export function Header() {
             </div>
 
             <a href="#contacto" onClick={() => setIsMobileMenuOpen(false)}>
-              <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground mt-4">
+              <Button className="mt-4 h-12 w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_12px_30px_rgba(16,185,129,0.25)]">
                 {t("nav.requestDemo")}
               </Button>
             </a>
