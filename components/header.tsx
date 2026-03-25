@@ -24,7 +24,7 @@ export function Header() {
   ]
 
   const modulesSubmenu = [
-    { href: "#modulos", label: t("nav.modules.all") },
+    { href: "#soluciones", label: t("nav.modules.all") },
     { href: "/sense-iot", label: t("nav.modules.sense") },
     { href: "/smart-audits", label: t("nav.modules.audits") },
     { href: "/smart-citas", label: t("nav.modules.citas") },
@@ -68,7 +68,7 @@ export function Header() {
           <Link href="/" className="flex items-center gap-2">
             <Image
               src="/sidonBI.png"
-              alt="SIDÓN"
+              alt="SIDON"
               width={120}
               height={40}
               className="h-10 w-auto"
@@ -99,7 +99,7 @@ export function Header() {
               )
             })}
 
-            {/* Módulos Dropdown */}
+            {/* Modules dropdown */}
             <div
               className="relative"
               onMouseEnter={handleMouseEnter}
@@ -174,7 +174,7 @@ export function Header() {
               </Link>
             ))}
 
-            {/* Módulos Section in Mobile */}
+            {/* Modules section in mobile */}
             <div className="space-y-2">
               <div className="py-2 text-base font-medium text-foreground">
                 {t("nav.modules")}

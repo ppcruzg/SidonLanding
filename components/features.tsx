@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Features = () => {
     const { t } = useLanguage();
-    const [activeModule, setActiveModule] = useState<string | null>(null);
+    const [activeModule, setActiveModule] = useState<string | null>("sense");
 
     const modules = [
         {
@@ -26,7 +26,8 @@ const Features = () => {
             color: "from-blue-500 to-cyan-500",
             iconColor: "text-blue-600",
             borderColor: "border-blue-500",
-            glowColor: "shadow-blue-500/30"
+            glowColor: "shadow-blue-500/30",
+            href: "/sense-iot"
         },
         {
             id: 'audits',
@@ -43,7 +44,8 @@ const Features = () => {
             color: "from-emerald-500 to-green-500",
             iconColor: "text-emerald-600",
             borderColor: "border-emerald-500",
-            glowColor: "shadow-emerald-500/30"
+            glowColor: "shadow-emerald-500/30",
+            href: "/smart-audits"
         },
         {
             id: 'mantiz',
@@ -60,7 +62,9 @@ const Features = () => {
             color: "from-purple-500 to-pink-500",
             iconColor: "text-purple-600",
             borderColor: "border-purple-500",
-            glowColor: "shadow-purple-500/30"
+            glowColor: "shadow-purple-500/30",
+            href: "https://servicios.sidon.mx/",
+            external: true
         },
         {
             id: 'citas',
@@ -77,14 +81,15 @@ const Features = () => {
             color: "from-orange-500 to-red-500",
             iconColor: "text-orange-600",
             borderColor: "border-orange-500",
-            glowColor: "shadow-orange-500/30"
+            glowColor: "shadow-orange-500/30",
+            href: "/smart-citas"
         }
     ];
 
     const currentBgImage = modules.find(m => m.id === activeModule)?.bgImage || null;
 
     return (
-        <section id="modulos" className="relative py-24 overflow-hidden">
+        <section id="soluciones" className="relative py-24 overflow-hidden">
             {/* Dynamic Background Images */}
             <div className="absolute inset-0 bg-slate-50">
                 <AnimatePresence mode="wait">
@@ -138,95 +143,102 @@ const Features = () => {
                         const isActive = activeModule === module.id;
 
                         return (
-                            <motion.div
+                            <motion.article
                                 key={module.id}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}
                                 onMouseEnter={() => setActiveModule(module.id)}
-                                onMouseLeave={() => setActiveModule(null)}
-                                className="group cursor-pointer"
+                                onFocus={() => setActiveModule(module.id)}
+                                onClick={() => setActiveModule(module.id)}
+                                className="group"
                             >
-                                <Link href={
-                                    module.id === 'sense' ? "/sense-iot" :
-                                        module.id === 'audits' ? "/smart-audits" :
-                                            module.id === 'mantiz' ? "#mantenimiento" :
-                                                module.id === 'citas' ? "/smart-citas" :
-                                                    "#"
-                                }>
-                                    {/* Glassmorphism Card */}
-                                    <div className={`relative h-full p-8 rounded-3xl transition-all duration-500 ${isActive
-                                        ? `backdrop-blur-xl bg-white/95 border-2 ${module.borderColor} shadow-2xl ${module.glowColor} scale-105`
+                                {/* Glassmorphism Card */}
+                                <div
+                                    className={`relative h-full p-8 rounded-3xl transition-all duration-500 cursor-pointer ${isActive
+                                        ? `backdrop-blur-xl bg-white/95 border-2 ${module.borderColor} shadow-2xl ${module.glowColor} scale-[1.03]`
                                         : 'backdrop-blur-xl bg-white/80 border border-white/40 shadow-lg hover:shadow-xl'
+                                        }`}
+                                    tabIndex={0}
+                                >
+                                    {/* Icon Circle */}
+                                    <div className={`mb-6 w-16 h-16 rounded-2xl bg-gradient-to-br ${module.color} p-0.5 transition-transform duration-500 ${isActive ? 'scale-110 rotate-6' : 'group-hover:scale-105'
                                         }`}>
-                                        {/* Icon Circle */}
-                                        <div className={`mb-6 w-16 h-16 rounded-2xl bg-gradient-to-br ${module.color} p-0.5 transition-transform duration-500 ${isActive ? 'scale-110 rotate-6' : 'group-hover:scale-105'
-                                            }`}>
-                                            <div className="w-full h-full rounded-2xl bg-white flex items-center justify-center">
-                                                <Icon size={32} className={`${module.iconColor} transition-transform duration-500 ${isActive ? 'scale-110' : ''
-                                                    }`} />
-                                            </div>
+                                        <div className="w-full h-full rounded-2xl bg-white flex items-center justify-center">
+                                            <Icon size={32} className={`${module.iconColor} transition-transform duration-500 ${isActive ? 'scale-110' : ''
+                                                }`} />
                                         </div>
+                                    </div>
 
-                                        {/* Content */}
-                                        <div className="space-y-3">
-                                            <p className={`text-sm font-semibold uppercase tracking-wide transition-colors duration-300 ${isActive ? module.iconColor : 'text-slate-500'
-                                                }`}>
-                                                {module.subtitle}
-                                            </p>
+                                    {/* Content */}
+                                    <div className="space-y-3">
+                                        <p className={`text-sm font-semibold uppercase tracking-wide transition-colors duration-300 ${isActive ? module.iconColor : 'text-slate-500'
+                                            }`}>
+                                            {module.subtitle}
+                                        </p>
 
-                                            <h3 className="text-2xl font-bold text-slate-900">
-                                                {module.title}
-                                            </h3>
+                                        <h3 className="text-2xl font-bold text-slate-900">
+                                            {module.title}
+                                        </h3>
 
-                                            <p className="text-slate-600 leading-relaxed">
-                                                {module.description}
-                                            </p>
+                                        <p className="text-slate-600 leading-relaxed">
+                                            {module.description}
+                                        </p>
 
-                                            {/* Features List - Shown on Hover */}
-                                            <AnimatePresence>
-                                                {isActive && (
-                                                    <motion.ul
-                                                        initial={{ opacity: 0, height: 0 }}
-                                                        animate={{ opacity: 1, height: 'auto' }}
-                                                        exit={{ opacity: 0, height: 0 }}
-                                                        transition={{ duration: 0.3 }}
-                                                        className="space-y-2 pt-4 border-t border-slate-200"
-                                                    >
-                                                        {module.features.map((feature, idx) => (
-                                                            <motion.li
-                                                                key={idx}
-                                                                initial={{ opacity: 0, x: -10 }}
-                                                                animate={{ opacity: 1, x: 0 }}
-                                                                transition={{ delay: idx * 0.1 }}
-                                                                className="flex items-start gap-2 text-sm text-slate-700"
-                                                            >
-                                                                <span className={`mt-1 w-1.5 h-1.5 rounded-full ${module.iconColor.replace('text-', 'bg-')} flex-shrink-0`} />
-                                                                {feature}
-                                                            </motion.li>
-                                                        ))}
-                                                    </motion.ul>
-                                                )}
-                                            </AnimatePresence>
+                                        {/* Features List - Visible on active card for mobile and desktop */}
+                                        <AnimatePresence initial={false}>
+                                            {isActive && (
+                                                <motion.ul
+                                                    initial={{ opacity: 0, height: 0 }}
+                                                    animate={{ opacity: 1, height: 'auto' }}
+                                                    exit={{ opacity: 0, height: 0 }}
+                                                    transition={{ duration: 0.3 }}
+                                                    className="space-y-2 pt-4 border-t border-slate-200"
+                                                >
+                                                    {module.features.map((feature, idx) => (
+                                                        <motion.li
+                                                            key={idx}
+                                                            initial={{ opacity: 0, x: -10 }}
+                                                            animate={{ opacity: 1, x: 0 }}
+                                                            transition={{ delay: idx * 0.08 }}
+                                                            className="flex items-start gap-2 text-sm text-slate-700"
+                                                        >
+                                                            <span className={`mt-1 w-1.5 h-1.5 rounded-full ${module.iconColor.replace('text-', 'bg-')} flex-shrink-0`} />
+                                                            {feature}
+                                                        </motion.li>
+                                                    ))}
+                                                </motion.ul>
+                                            )}
+                                        </AnimatePresence>
 
-                                            {/* Learn More Link (Visual only) */}
-                                            <div className={`pt-4 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                                                }`}>
-                                                <div
-                                                    className={`inline-flex items-center gap-2 text-sm font-semibold ${module.iconColor} hover:gap-3 transition-all`}
+                                        <div className="pt-4">
+                                            {module.external ? (
+                                                <a
+                                                    href={module.href}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className={`inline-flex items-center gap-2 text-sm font-semibold ${module.iconColor} transition-all ${isActive ? 'opacity-100' : 'opacity-70 group-hover:opacity-100'}`}
                                                 >
                                                     {t("solutions.learnMore")}
                                                     <ArrowRight size={16} />
-                                                </div>
-                                            </div>
+                                                </a>
+                                            ) : (
+                                                <Link
+                                                    href={module.href}
+                                                    className={`inline-flex items-center gap-2 text-sm font-semibold ${module.iconColor} transition-all ${isActive ? 'opacity-100' : 'opacity-70 group-hover:opacity-100'}`}
+                                                >
+                                                    {t("solutions.learnMore")}
+                                                    <ArrowRight size={16} />
+                                                </Link>
+                                            )}
                                         </div>
-
-                                        {/* Decorative Corner Accent */}
-                                        <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${module.color} opacity-0 ${isActive ? 'opacity-10' : 'group-hover:opacity-5'
-                                            } rounded-bl-full transition-opacity duration-500`} />
                                     </div>
-                                </Link>
-                            </motion.div>
+
+                                    {/* Decorative Corner Accent */}
+                                    <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${module.color} opacity-0 ${isActive ? 'opacity-10' : 'group-hover:opacity-5'
+                                        } rounded-bl-full transition-opacity duration-500`} />
+                                </div>
+                            </motion.article>
                         );
                     })}
                 </div>
