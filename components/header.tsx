@@ -28,7 +28,7 @@ export function Header() {
     { href: "/sense-iot", label: t("nav.modules.sense") },
     { href: "/smart-audits", label: t("nav.modules.audits") },
     { href: "/smart-citas", label: t("nav.modules.citas") },
-    { href: "#mantenimiento", label: t("nav.modules.mantenimiento") },
+    { href: "https://servicios.sidon.mx/", label: t("nav.modules.mantenimiento"), external: true },
     { href: "#duma-value", label: t("nav.modules.duma") },
   ]
 
@@ -58,13 +58,12 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
+        ? "bg-slate-950/35 backdrop-blur-xl"
         : "bg-transparent"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image
               src="/sidonBI.png"
@@ -76,75 +75,88 @@ export function Header() {
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href || (link.href === "/" && pathname === "/")
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-sm font-medium transition-all duration-300 relative group ${isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
-                    }`}
-                >
-                  {link.label}
-                  {/* Subtle active underline */}
-                  {isActive && (
-                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary rounded-full" />
-                  )}
-                  {!isActive && (
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary rounded-full transition-all duration-300 group-hover:w-full" />
-                  )}
-                </Link>
-              )
-            })}
-
-            {/* Modules dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
-              <button className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                {t("nav.modules")}
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isModulesDropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
-
-              {/* Dropdown Menu */}
-              {isModulesDropdownOpen && (
-                <div className="absolute top-full left-0 mt-1 w-64 bg-background/95 backdrop-blur-md border border-border rounded-lg shadow-lg overflow-hidden">
-                  {modulesSubmenu.map((item) => {
-                    const isActive = pathname === item.href
+          <div className="hidden lg:flex items-center justify-end flex-1">
+            <div className="relative overflow-visible rounded-[18px] border border-white/15 bg-white/8 pl-3 pr-3 py-2 shadow-[0_18px_55px_rgba(15,23,42,0.22)] backdrop-blur-2xl">
+              <div className="pointer-events-none absolute inset-0 rounded-[18px] bg-[linear-gradient(180deg,rgba(255,255,255,0.2),rgba(255,255,255,0.04)_42%,rgba(255,255,255,0.02))]" />
+              <div className="relative flex items-center gap-2">
+                <nav className="flex items-center gap-1 pr-2">
+                  {navLinks.map((link) => {
+                    const isActive = pathname === link.href || (link.href === "/" && pathname === "/")
                     return (
                       <Link
-                        key={item.href}
-                        href={item.href}
-                        className={`block px-4 py-3 text-sm font-medium transition-colors ${isActive
-                          ? "text-primary bg-primary/5 border-l-2 border-primary"
-                          : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                        key={link.href}
+                        href={link.href}
+                        className={`px-4 py-2 text-sm font-medium transition-all duration-300 ${isActive
+                          ? "rounded-[12px] bg-white text-slate-900 shadow-sm"
+                          : "rounded-[10px] text-white/78 hover:bg-white/8 hover:text-white"
                           }`}
-                        onClick={() => setIsModulesDropdownOpen(false)}
                       >
-                        {item.label}
+                        {link.label}
                       </Link>
                     )
                   })}
-                </div>
-              )}
-            </div>
-          </nav>
 
-          {/* CTA Button & Language Toggle */}
-          <div className="hidden lg:flex items-center gap-2">
-            <LanguageToggle />
-            <a href="#contacto">
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                {t("nav.requestDemo")}
-              </Button>
-            </a>
+                  <div
+                    className="relative"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <button className="flex items-center gap-1 rounded-[10px] px-4 py-2 text-sm font-medium text-white/78 transition-colors hover:bg-white/8 hover:text-white">
+                      {t("nav.modules")}
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isModulesDropdownOpen ? 'rotate-180' : ''}`} />
+                    </button>
+
+                    {isModulesDropdownOpen && (
+                      <div className="absolute right-0 top-full mt-3 w-72 overflow-hidden rounded-[18px] border border-white/15 bg-slate-950/78 shadow-[0_24px_60px_rgba(2,6,23,0.45)] backdrop-blur-2xl">
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.03)_45%,rgba(255,255,255,0.02))]" />
+                        <div className="relative p-2">
+                          {modulesSubmenu.map((item) => {
+                            const isActive = pathname === item.href
+                            return item.external ? (
+                              <a
+                                key={item.href}
+                                href={item.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block rounded-[12px] px-4 py-3 text-sm font-medium text-white/72 transition-colors hover:bg-white/10 hover:text-white"
+                                onClick={() => setIsModulesDropdownOpen(false)}
+                              >
+                                {item.label}
+                              </a>
+                            ) : (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className={`block rounded-[12px] px-4 py-3 text-sm font-medium transition-colors ${isActive
+                                  ? "bg-white text-slate-900"
+                                  : "text-white/72 hover:bg-white/10 hover:text-white"
+                                  }`}
+                                onClick={() => setIsModulesDropdownOpen(false)}
+                              >
+                                {item.label}
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </nav>
+
+                <div className="h-8 w-px bg-white/12" />
+
+                <div className="flex items-center gap-2 pl-1">
+                  <LanguageToggle />
+                  <a href="#contacto">
+                    <Button className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_10px_30px_rgba(16,185,129,0.28)]">
+                      {t("nav.requestDemo")}
+                    </Button>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="flex lg:hidden items-center gap-2">
             <LanguageToggle />
             <button
@@ -159,7 +171,6 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-background border-t border-border">
           <div className="px-4 py-4 space-y-3">
@@ -174,21 +185,33 @@ export function Header() {
               </Link>
             ))}
 
-            {/* Modules section in mobile */}
             <div className="space-y-2">
               <div className="py-2 text-base font-medium text-foreground">
                 {t("nav.modules")}
               </div>
               <div className="pl-4 space-y-2">
                 {modulesSubmenu.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="block py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
+                  item.external ? (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  )
                 ))}
               </div>
             </div>
