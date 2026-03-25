@@ -9,8 +9,8 @@ const _inter = Inter({ subsets: ["latin"] });
 const _spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'SIDÓN Business Intelligence | Inteligencia Operativa para Retail',
-  description: 'Plataforma de Business Intelligence para retail. IoT, AI CCTV, gestión de mantenimiento y control de acceso. Incrementa productividad y reduce costos operativos.',
+  title: 'SIDON Business Intelligence | Inteligencia Operativa para Retail',
+  description: 'Plataforma de Business Intelligence para retail. IoT, AI CCTV, gestion de mantenimiento y control de acceso. Incrementa productividad y reduce costos operativos.',
   generator: 'v0.app',
   icons: {
     icon: [

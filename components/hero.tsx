@@ -9,7 +9,7 @@ import { useState, useEffect } from "react"
 export function Hero() {
   const { t } = useLanguage()
   const [activeStatusIndex, setActiveStatusIndex] = useState(0)
-  const [closedLoopStep, setClosedLoopStep] = useState(0) // 0: Insight, 1: Acción, 2: Resolución, 3: Memoria
+  const [closedLoopStep, setClosedLoopStep] = useState(0) // 0: Insight, 1: Accion, 2: Resolucion, 3: Memoria
   const [efficiencyHours, setEfficiencyHours] = useState(3.5)
   const [processingSource, setProcessingSource] = useState(0) // Rotating data sources
 
@@ -48,11 +48,11 @@ export function Hero() {
     return () => clearInterval(interval)
   }, [])
 
-  // DUMA Alert System - Jerarquización (Crítico, Advertencia, Éxito, Info)
+  // DUMA alert system priorities
   const statusItems = [
     {
       icon: AlertTriangle,
-      label: "Venta baja crítica - Sucursal Centro",
+      label: "Venta baja critica - Sucursal Centro",
       severity: "critical",
       color: "red",
       bgGradient: "from-red-500/20 to-red-600/10",
@@ -64,7 +64,7 @@ export function Hero() {
     },
     {
       icon: TrendingDown,
-      label: "Auditoría pendiente - Refrigeración",
+      label: "Auditoria pendiente - Refrigeracion",
       severity: "warning",
       color: "orange",
       bgGradient: "from-orange-500/20 to-orange-600/10",
@@ -76,7 +76,7 @@ export function Hero() {
     },
     {
       icon: CheckCircle2,
-      label: "Objetivo cumplido - Energía optimizada",
+      label: "Objetivo cumplido - Energia optimizada",
       severity: "success",
       color: "emerald",
       bgGradient: "from-emerald-500/20 to-emerald-600/10",
@@ -103,19 +103,19 @@ export function Hero() {
   // Closed Loop Steps
   const closedLoopSteps = [
     { icon: Eye, label: "Insight", sublabel: "Detecta problema", color: "text-blue-400" },
-    { icon: MousePointer, label: "Acción", sublabel: "Genera tarea", color: "text-emerald-400" },
-    { icon: CheckCircle2, label: "Resolución", sublabel: "Staff resuelve", color: "text-green-400" },
-    { icon: Database, label: "Memoria", sublabel: "Registra análisis", color: "text-purple-400" }
+    { icon: MousePointer, label: "Accion", sublabel: "Genera tarea", color: "text-emerald-400" },
+    { icon: CheckCircle2, label: "Resolucion", sublabel: "Staff resuelve", color: "text-green-400" },
+    { icon: Database, label: "Memoria", sublabel: "Registra analisis", color: "text-purple-400" }
   ]
 
   // Data sources being processed
-  const dataSources = ["Sidón", "Excel", "SAP", "Emails"]
+  const dataSources = ["Sidon", "Excel", "SAP", "Emails"]
 
   // Floating insights data
   const floatingInsights = [
     { text: "Ahorro detectado +15%", delay: 0, duration: 4 },
     { text: "Eficiencia +22%", delay: 1.5, duration: 5 },
-    { text: "0 incidentes críticos", delay: 3, duration: 4.5 }
+    { text: "0 incidentes criticos", delay: 3, duration: 4.5 }
   ]
 
   // Bar chart data with fluctuation
@@ -374,7 +374,7 @@ export function Hero() {
                               animate={{ opacity: 1 }}
                               className="text-[10px] text-white/40 mt-1 font-medium"
                             >
-                              Prioridad: {status.severity === 'critical' ? 'Máxima' : status.severity === 'warning' ? 'Alta' : 'Estándar'}
+                              Prioridad: {status.severity === 'critical' ? 'Maxima' : status.severity === 'warning' ? 'Alta' : 'Estandar'}
                             </motion.p>
                           )}
                         </div>
@@ -477,7 +477,7 @@ export function Hero() {
                       ))}
                     </div>
                     <p className="text-xs text-slate-500 text-center mt-4 font-medium tracking-wide">
-                      Eficiencia operativa · Últimos 7 días
+                      Eficiencia operativa Â· Ultimos 7 dias
                     </p>
                   </motion.div>
                 </div>

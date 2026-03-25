@@ -19,7 +19,7 @@ export function ContactForm() {
         e.preventDefault()
         setIsSubmitting(true)
 
-        // Simular envío de correo
+        // Simular envio de correo
         await new Promise(resolve => setTimeout(resolve, 1500))
 
         setIsSubmitting(false)

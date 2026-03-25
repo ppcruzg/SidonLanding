@@ -123,3 +123,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .site-shell {
+    position: static;
+    isolation: auto;
+  }
+
+  .site-shell::before {
+    content: none;
+  }
+
+  .section-shell {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2;
+  }
+
+  .section-title {
+    @apply text-3xl lg:text-5xl font-bold;
+  }
+}
