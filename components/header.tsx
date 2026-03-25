@@ -28,7 +28,7 @@ export function Header() {
     { href: "/sense-iot", label: t("nav.modules.sense") },
     { href: "/smart-audits", label: t("nav.modules.audits") },
     { href: "/smart-citas", label: t("nav.modules.citas") },
-    { href: "#mantenimiento", label: t("nav.modules.mantenimiento") },
+    { href: "https://servicios.sidon.mx/", label: t("nav.modules.mantenimiento"), external: true },
     { href: "#duma-value", label: t("nav.modules.duma") },
   ]
 
@@ -115,7 +115,18 @@ export function Header() {
                 <div className="absolute top-full left-0 mt-1 w-64 bg-background/95 backdrop-blur-md border border-border rounded-lg shadow-lg overflow-hidden">
                   {modulesSubmenu.map((item) => {
                     const isActive = pathname === item.href
-                    return (
+                    return item.external ? (
+                      <a
+                        key={item.href}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-3 text-sm font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-accent"
+                        onClick={() => setIsModulesDropdownOpen(false)}
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
                       <Link
                         key={item.href}
                         href={item.href}
@@ -181,14 +192,27 @@ export function Header() {
               </div>
               <div className="pl-4 space-y-2">
                 {modulesSubmenu.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="block py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
+                  item.external ? (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  )
                 ))}
               </div>
             </div>
