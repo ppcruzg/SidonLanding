@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { LanguageProvider } from "@/lib/language-context"
+import { RecaptchaProvider } from "@/components/recaptcha-provider"
 import './globals.css'
 
 const _inter = Inter({ subsets: ["latin"] });
@@ -40,8 +41,10 @@ export default function RootLayout({
     <html lang="es">
       <body className={`font-sans antialiased`}>
         <LanguageProvider>
-          {children}
-          <Analytics />
+          <RecaptchaProvider>
+            {children}
+            <Analytics />
+          </RecaptchaProvider>
         </LanguageProvider>
       </body>
     </html>

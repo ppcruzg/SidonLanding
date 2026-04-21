@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Wifi, Camera, Wrench, QrCode, ArrowRight } from 'lucide-react';
+import { Wifi, Camera, Wrench, QrCode, UserCheck, ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/lib/language-context';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -83,6 +83,26 @@ const Features = () => {
             borderColor: "border-orange-500",
             glowColor: "shadow-orange-500/30",
             href: "/smart-citas"
+        },
+        {
+            id: 'axess',
+            icon: UserCheck,
+            title: t("solutions.axess.title"),
+            subtitle: t("solutions.axess.subtitle"),
+            description: t("solutions.axess.description"),
+            features: [
+                t("solutions.axess.feature1"),
+                t("solutions.axess.feature2"),
+                t("solutions.axess.feature3")
+            ],
+            bgImage: "/citas-bg.png",
+            color: "from-sky-500 to-blue-600",
+            iconColor: "text-sky-600",
+            borderColor: "border-sky-500",
+            glowColor: "shadow-sky-500/30",
+            href: "https://axess.sidon.mx/demo_poa_qa/",
+            external: true,
+            isNew: true
         }
     ];
 
@@ -137,7 +157,7 @@ const Features = () => {
                 </div>
 
                 {/* Modules Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                     {modules.map((module, index) => {
                         const Icon = module.icon;
                         const isActive = activeModule === module.id;
@@ -161,6 +181,12 @@ const Features = () => {
                                         }`}
                                     tabIndex={0}
                                 >
+                                    {/* NUEVO badge */}
+                                    {'isNew' in module && module.isNew && (
+                                        <div className="absolute top-4 right-4 px-2 py-0.5 rounded-full bg-sky-500 text-white text-[10px] font-bold tracking-widest uppercase">
+                                            NUEVO
+                                        </div>
+                                    )}
                                     {/* Icon Circle */}
                                     <div className={`mb-6 w-16 h-16 rounded-2xl bg-gradient-to-br ${module.color} p-0.5 transition-transform duration-500 ${isActive ? 'scale-110 rotate-6' : 'group-hover:scale-105'
                                         }`}>

@@ -24,6 +24,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.modules.citas": "Smart Citas",
     "nav.modules.mantenimiento": "Sidon Mantiz",
     "nav.modules.duma": "DUMA Agente AI",
+    "nav.modules.axess": "Axess-One",
 
     // Hero
     "hero.badge": "Business Intelligence para CEOs",
@@ -123,6 +124,12 @@ const translations: Record<Language, Record<string, string>> = {
     "solutions.citas.feature1": "Check-in sin contacto",
     "solutions.citas.feature2": "Registro de visitantes",
     "solutions.citas.feature3": "Reportes de acceso",
+    "solutions.axess.subtitle": "Verificación de Presencia",
+    "solutions.axess.title": "Axess-One",
+    "solutions.axess.description": "Confirma la presencia real de cada colaborador con geolocalización, biometría facial y validación por turno. Detecta ausencias, retardos y anomalías al instante.",
+    "solutions.axess.feature1": "100% Trazabilidad de personal",
+    "solutions.axess.feature2": "-35% Reducción de ausentismo",
+    "solutions.axess.feature3": "Alertas en tiempo real (RT)",
 
     // Comparison
     "comparison.badge": "Transformación",
@@ -426,6 +433,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.modules.citas": "Smart Citas",
     "nav.modules.mantenimiento": "Sidon Mantiz",
     "nav.modules.duma": "DUMA AI Agent",
+    "nav.modules.axess": "Axess-One",
 
     // Hero
     "hero.badge": "Business Intelligence for CEOs",
@@ -525,6 +533,12 @@ const translations: Record<Language, Record<string, string>> = {
     "solutions.citas.feature1": "Contactless check-in",
     "solutions.citas.feature2": "Visitor registration",
     "solutions.citas.feature3": "Access reports",
+    "solutions.axess.subtitle": "Presence Verification",
+    "solutions.axess.title": "Axess-One",
+    "solutions.axess.description": "Confirms real presence of each collaborator with geolocation, facial biometrics and shift validation. Detects absences, delays and anomalies instantly.",
+    "solutions.axess.feature1": "100% Staff traceability",
+    "solutions.axess.feature2": "-35% Absenteeism reduction",
+    "solutions.axess.feature3": "Real-time alerts (RT)",
 
     // Comparison
     "comparison.badge": "Transformation",

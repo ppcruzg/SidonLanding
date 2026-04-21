@@ -1,33 +1,53 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import { useLanguage } from "@/lib/language-context"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
-import { Mail, Send, CheckCircle2 } from "lucide-react"
+import { Mail, Send, CheckCircle2, Shield } from "lucide-react"
 import { motion } from "framer-motion"
+import { submitContactForm } from "@/app/actions"
+import { toast } from "sonner"
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 
 export function ContactForm() {
     const { t } = useLanguage()
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
+    const { executeRecaptcha } = useGoogleReCaptcha()
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setIsSubmitting(true)
 
-        // Simular envio de correo
-        await new Promise(resolve => setTimeout(resolve, 1500))
+        // Get reCAPTCHA token
+        let recaptchaToken = ''
+        if (executeRecaptcha) {
+            try {
+                recaptchaToken = await executeRecaptcha('contact_form')
+            } catch {
+                toast.error('Error de verificación CAPTCHA. Por favor recarga la página.')
+                setIsSubmitting(false)
+                return
+            }
+        }
 
+        const formData = new FormData(e.currentTarget)
+        formData.append('recaptchaToken', recaptchaToken)
+
+        const result = await submitContactForm(formData)
         setIsSubmitting(false)
-        setIsSubmitted(true)
 
-        // Reset after 5 seconds
-        setTimeout(() => setIsSubmitted(false), 5000)
-    }
+        if (result.success) {
+            setIsSubmitted(true)
+            setTimeout(() => setIsSubmitted(false), 5000)
+        } else {
+            toast.error(result.error || "Error al enviar el mensaje")
+        }
+    }, [executeRecaptcha])
 
     return (
         <section id="contacto" className="py-24 relative overflow-hidden bg-slate-950">
@@ -97,6 +117,7 @@ export function ContactForm() {
                                                 <Label htmlFor="name" className="text-slate-300 ml-1">{t("contact.name")}</Label>
                                                 <Input
                                                     id="name"
+                                                    name="name"
                                                     required
                                                     placeholder="John Doe"
                                                     className="bg-slate-950/50 border-slate-800 focus:border-emerald-500/50 focus:ring-emerald-500/20 text-white h-12 rounded-xl"
@@ -106,6 +127,7 @@ export function ContactForm() {
                                                 <Label htmlFor="email" className="text-slate-300 ml-1">{t("contact.email")}</Label>
                                                 <Input
                                                     id="email"
+                                                    name="email"
                                                     type="email"
                                                     required
                                                     placeholder="john@company.com"
@@ -118,6 +140,7 @@ export function ContactForm() {
                                             <Label htmlFor="company" className="text-slate-300 ml-1">{t("contact.company")}</Label>
                                             <Input
                                                 id="company"
+                                                name="company"
                                                 placeholder="ECOSAT"
                                                 className="bg-slate-950/50 border-slate-800 focus:border-emerald-500/50 focus:ring-emerald-500/20 text-white h-12 rounded-xl"
                                             />
@@ -127,6 +150,7 @@ export function ContactForm() {
                                             <Label htmlFor="message" className="text-slate-300 ml-1">{t("contact.message")}</Label>
                                             <Textarea
                                                 id="message"
+                                                name="message"
                                                 required
                                                 placeholder="..."
                                                 className="bg-slate-950/50 border-slate-800 focus:border-emerald-500/50 focus:ring-emerald-500/20 text-white min-h-[120px] rounded-xl resize-none"
@@ -150,6 +174,12 @@ export function ContactForm() {
                                                 </span>
                                             )}
                                         </Button>
+
+                                        {/* reCAPTCHA badge notice */}
+                                        <p className="text-center text-xs text-slate-600 flex items-center justify-center gap-1.5 pt-1">
+                                            <Shield className="w-3 h-3 text-emerald-700" />
+                                            Protegido por Google reCAPTCHA
+                                        </p>
                                     </form>
                                 )}
                             </CardContent>

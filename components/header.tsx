@@ -31,6 +31,7 @@ export function Header() {
     { href: "/smart-citas", label: t("nav.modules.citas") },
     { href: "https://servicios.sidon.mx/", label: t("nav.modules.mantenimiento"), external: true },
     { href: "#duma-value", label: t("nav.modules.duma") },
+    { href: "https://axess.sidon.mx/demo_poa_qa/", label: t("nav.modules.axess"), external: true, isNew: true },
   ]
 
   useEffect(() => {
@@ -134,16 +135,19 @@ export function Header() {
                                 href={item.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="block rounded-[12px] px-4 py-3 text-sm font-medium text-white/72 transition-colors hover:bg-white/10 hover:text-white"
+                                className="flex items-center justify-between rounded-[12px] px-4 py-3 text-sm font-medium text-white/72 transition-colors hover:bg-white/10 hover:text-white"
                                 onClick={() => setIsModulesDropdownOpen(false)}
                               >
                                 {item.label}
+                                {'isNew' in item && item.isNew && (
+                                  <span className="ml-2 px-1.5 py-0.5 rounded-full bg-sky-500 text-white text-[9px] font-bold tracking-widest uppercase">NUEVO</span>
+                                )}
                               </a>
                             ) : (
                               <Link
                                 key={item.href}
                                 href={item.href}
-                                className={`block rounded-[12px] px-4 py-3 text-sm font-medium transition-colors ${isActive
+                                className={`flex items-center justify-between rounded-[12px] px-4 py-3 text-sm font-medium transition-colors ${isActive
                                   ? "bg-white text-slate-900"
                                   : "text-white/72 hover:bg-white/10 hover:text-white"
                                   }`}
