@@ -1,4 +1,6 @@
 "use client"
+import { withBase } from "@/lib/paths";
+
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
@@ -80,7 +82,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/sidonBI.png"
+              src={withBase("/logo-sidon.png")}
               alt="SIDON"
               width={120}
               height={40}

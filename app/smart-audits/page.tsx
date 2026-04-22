@@ -1,4 +1,6 @@
 "use client"
+import { withBase } from "@/lib/paths";
+
 
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -101,7 +103,7 @@ export default function SmartAuditsPage() {
                         >
                             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-slate-700/50 shadow-2xl shadow-emerald-900/20">
                                 <Image
-                                    src="/smart-audits-dashboard.png"
+                                    src={withBase("/smart-audits-dashboard.png")}
                                     alt="SmartAudits AI Analysis Dashboard"
                                     fill
                                     className="object-cover"

@@ -1,4 +1,6 @@
 "use client"
+import { withBase } from "@/lib/paths";
+
 
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -118,7 +120,7 @@ export default function SenseIoTPage() {
                         >
                             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-slate-700/50 shadow-2xl shadow-emerald-900/20">
                                 <Image
-                                    src="/sense-dashboard.png"
+                                    src={withBase("/sense-dashboard.png")}
                                     alt="Sense IoT Dashboard"
                                     fill
                                     className="object-cover"

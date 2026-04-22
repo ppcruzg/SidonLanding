@@ -1,9 +1,9 @@
 import React from "react"
 import type { Metadata } from 'next'
 import { Inter, Space_Grotesk } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import { LanguageProvider } from "@/lib/language-context"
 import { RecaptchaProvider } from "@/components/recaptcha-provider"
+import { withBase } from "@/lib/paths"
 import './globals.css'
 
 const _inter = Inter({ subsets: ["latin"] });
@@ -16,19 +16,19 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: withBase('/icon-light-32x32.png'),
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: withBase('/icon-dark-32x32.png'),
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
+        url: withBase('/icon.svg'),
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: withBase('/apple-icon.png'),
   },
 }
 
@@ -43,7 +43,6 @@ export default function RootLayout({
         <LanguageProvider>
           <RecaptchaProvider>
             {children}
-            <Analytics />
           </RecaptchaProvider>
         </LanguageProvider>
       </body>

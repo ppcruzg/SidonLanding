@@ -1,4 +1,6 @@
 "use client"
+import { withBase } from "@/lib/paths";
+
 
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -99,7 +101,7 @@ export default function SmartCitasPage() {
                         >
                             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-slate-700/50 shadow-2xl shadow-emerald-900/20">
                                 <Image
-                                    src="/smart-citas-dashboard.png"
+                                    src={withBase("/smart-citas-dashboard.png")}
                                     alt="Smart Citas Dashboard"
                                     fill
                                     className="object-cover"

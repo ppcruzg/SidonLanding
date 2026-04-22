@@ -1,4 +1,6 @@
 "use client"
+import { withBase } from "@/lib/paths";
+
 
 import React, { useEffect, useState } from 'react';
 import { Zap, Users, BarChart3, CheckCircle2, Shield, Clock } from 'lucide-react';
@@ -58,7 +60,7 @@ const ROISection = () => {
                 <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                     style={{
-                        backgroundImage: "url('/operational-team-bg.png')",
+                        backgroundImage: `url(${withBase("/operational-team-bg.png")})`,
                         backgroundPosition: "center 40%"
                     }}
                 />

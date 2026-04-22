@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/paths";
 import * as React from 'react';
 
 interface CustomerReceiptEmailProps {
@@ -39,7 +40,7 @@ export const CustomerReceiptEmail = ({ name }: CustomerReceiptEmailProps) => {
       <body>
         <div class="container">
           <div class="header">
-            <img src="/sidonBI.png" alt="Sidón Logo" class="logo" style="height: 32px; width: auto;" height="32">
+            <img src={withBase("/logo-sidon.png")} alt="Sidón Logo" class="logo" style="height: 32px; width: auto;" height="32">
           </div>
           <div class="content">
             <span class="welcome-text">Confirmación de Recibido</span>
@@ -55,7 +56,7 @@ export const CustomerReceiptEmail = ({ name }: CustomerReceiptEmailProps) => {
             <a href="https://sidon-landing.vercel.app" class="button">Visitar nuestro sitio</a>
           </div>
           <div class="footer">
-            <img src="/EcosatN.png" alt="Ecosat Logo" class="footer-logo" style="height: 20px; width: auto;" height="20">
+            <img src={withBase("/EcosatN.png")} alt="Ecosat Logo" class="footer-logo" style="height: 20px; width: auto;" height="20">
             <div class="social-links">
               <a href="#">LinkedIn</a>
               <a href="#">Twitter</a>

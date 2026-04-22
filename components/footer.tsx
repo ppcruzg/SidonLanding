@@ -1,4 +1,6 @@
 "use client"
+import { withBase } from "@/lib/paths";
+
 
 import Link from "next/link"
 import Image from "next/image"
@@ -37,7 +39,7 @@ export function Footer() {
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
               <Image
-                src="/sidonBI.png"
+                src={withBase("/logo-sidon.png")}
                 alt="SIDON"
                 width={120}
                 height={40}
@@ -130,7 +132,7 @@ export function Footer() {
             <h3 className="font-semibold text-foreground mb-4">{t("footer.ecosat.title")}</h3>
             <div className="mb-4">
               <Image
-                src="/EcosatN.png"
+                src={withBase("/EcosatN.png")}
                 alt="ECOSAT"
                 width={140}
                 height={40}
