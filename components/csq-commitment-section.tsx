@@ -1,4 +1,6 @@
 "use client"
+import { withBase } from "@/lib/paths";
+
 
 import React from 'react';
 import { Users2, MessagesSquare, TrendingUp } from 'lucide-react';
@@ -50,7 +52,7 @@ const CSQCommitmentSection = () => {
                     {/* Left Column - Image */}
                     <div className="relative h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl group">
                         <Image
-                            src="/csq-consultant.png"
+                            src={withBase("/csq-consultant.png")}
                             alt="CSQ consultant collaborating with branch manager"
                             fill
                             className="object-cover transition-transform duration-700 group-hover:scale-105"

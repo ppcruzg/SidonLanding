@@ -1,4 +1,6 @@
 "use client"
+import { withBase } from "@/lib/paths";
+
 
 import { Button } from "@/components/ui/button"
 import {
@@ -326,7 +328,7 @@ export function Hero() {
                       </div>
                       <div className="flex items-center gap-2.5">
                         <img
-                          src="/LOGO DUMA(1).png"
+                          src={withBase("/LOGO DUMA(1).png")}
                           alt="DUMA"
                           className="h-6 w-auto brightness-110 contrast-125"
                         />

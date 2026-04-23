@@ -1,4 +1,6 @@
 "use client"
+import { withBase } from "@/lib/paths";
+
 
 import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -83,7 +85,7 @@ const DumaSection = () => {
                 {/* Subtle Watermark Logo */}
                 <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 opacity-[0.03] pointer-events-none -z-10">
                     <img
-                        src="/LOGO DUMA(1).png"
+                        src={withBase("/LOGO DUMA(1).png")}
                         alt=""
                         className="w-[600px] h-auto grayscale brightness-0 invert"
                     />
@@ -101,7 +103,7 @@ const DumaSection = () => {
                             <div className="relative">
                                 <div className="absolute -inset-2 bg-emerald-500/20 blur-xl rounded-full opacity-50" />
                                 <img
-                                    src="/LOGO DUMA(1).png"
+                                    src={withBase("/LOGO DUMA(1).png")}
                                     alt="DUMA Logo"
                                     className="h-10 w-auto relative z-10 brightness-110 contrast-125"
                                 />

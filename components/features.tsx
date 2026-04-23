@@ -1,4 +1,6 @@
 "use client"
+import { withBase } from "@/lib/paths";
+
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -22,7 +24,7 @@ const Features = () => {
                 t("solutions.sense.feature2"),
                 t("solutions.sense.feature3")
             ],
-            bgImage: "/sense-bg.png",
+            bgImage: withBase("/sense-bg.png"),
             color: "from-blue-500 to-cyan-500",
             iconColor: "text-blue-600",
             borderColor: "border-blue-500",
@@ -40,7 +42,7 @@ const Features = () => {
                 t("solutions.audits.feature2"),
                 t("solutions.audits.feature3")
             ],
-            bgImage: "/audits-bg.png",
+            bgImage: withBase("/audits-bg.png"),
             color: "from-emerald-500 to-green-500",
             iconColor: "text-emerald-600",
             borderColor: "border-emerald-500",
@@ -58,7 +60,7 @@ const Features = () => {
                 t("solutions.mantiz.feature2"),
                 t("solutions.mantiz.feature3")
             ],
-            bgImage: "/mantiz-bg.png",
+            bgImage: withBase("/mantiz-bg.png"),
             color: "from-purple-500 to-pink-500",
             iconColor: "text-purple-600",
             borderColor: "border-purple-500",
@@ -77,7 +79,7 @@ const Features = () => {
                 t("solutions.citas.feature2"),
                 t("solutions.citas.feature3")
             ],
-            bgImage: "/citas-bg.png",
+            bgImage: withBase("/citas-bg.png"),
             color: "from-orange-500 to-red-500",
             iconColor: "text-orange-600",
             borderColor: "border-orange-500",
@@ -95,7 +97,7 @@ const Features = () => {
                 t("solutions.axess.feature2"),
                 t("solutions.axess.feature3")
             ],
-            bgImage: "/citas-bg.png",
+            bgImage: withBase("/citas-bg.png"),
             color: "from-sky-500 to-blue-600",
             iconColor: "text-sky-600",
             borderColor: "border-sky-500",
