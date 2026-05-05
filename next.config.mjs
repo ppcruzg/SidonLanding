@@ -12,6 +12,11 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_BASE_PATH: '/Landing',
   },
+  experimental: {
+    serverActions: {
+      allowedOrigins: ['www.sidon.mx', 'sidon.mx'],
+    },
+  },
 }
 
 export default nextConfig

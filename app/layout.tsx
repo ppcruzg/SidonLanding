@@ -14,20 +14,7 @@ export const metadata: Metadata = {
   description: 'Plataforma de Business Intelligence para retail. IoT, AI CCTV, gestion de mantenimiento y control de acceso. Incrementa productividad y reduce costos operativos.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: withBase('/icon-light-32x32.png'),
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: withBase('/icon-dark-32x32.png'),
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: withBase('/icon.svg'),
-        type: 'image/svg+xml',
-      },
-    ],
+    icon: withBase('/icon.png'),
     apple: withBase('/apple-icon.png'),
   },
 }
