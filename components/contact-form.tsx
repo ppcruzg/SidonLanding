@@ -21,6 +21,7 @@ export function ContactForm() {
 
     const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        const formData = new FormData(e.currentTarget)
         setIsSubmitting(true)
 
         // Get reCAPTCHA token
@@ -35,7 +36,6 @@ export function ContactForm() {
             }
         }
 
-        const formData = new FormData(e.currentTarget)
         formData.append('recaptchaToken', recaptchaToken)
 
         const result = await submitContactForm(formData)
