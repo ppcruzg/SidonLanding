@@ -4,6 +4,7 @@ import { Inter, Space_Grotesk } from 'next/font/google'
 import { LanguageProvider } from "@/lib/language-context"
 import { RecaptchaProvider } from "@/components/recaptcha-provider"
 import { withBase } from "@/lib/paths"
+import Script from 'next/script'
 import './globals.css'
 
 const _inter = Inter({ subsets: ["latin"] });
@@ -27,6 +28,22 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`font-sans antialiased`}>
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+              `}
+            </Script>
+          </>
+        )}
         <LanguageProvider>
           <RecaptchaProvider>
             {children}

@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { AlertCircle, UserCheck, QrCode, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
 import { useLanguage } from '@/lib/language-context';
+import { withBase } from '@/lib/paths';
 
 const MantizTimeline = () => {
     const { t } = useLanguage();
@@ -161,7 +162,7 @@ const MantizTimeline = () => {
                                                         {/* Image */}
                                                         <div className="relative h-48 rounded-2xl overflow-hidden mb-4 shadow-lg">
                                                             <Image
-                                                                src={node.image}
+                                                                src={withBase(node.image)}
                                                                 alt={node.imageAlt}
                                                                 fill
                                                                 className="object-cover"
@@ -254,7 +255,7 @@ const MantizTimeline = () => {
                                                     style={{ animation: 'fadeInUp 0.3s ease-out' }}
                                                 >
                                                     <Image
-                                                        src={node.image}
+                                                        src={withBase(node.image)}
                                                         alt={node.imageAlt}
                                                         fill
                                                         className="object-cover"
